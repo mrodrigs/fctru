@@ -4,8 +4,8 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import AboutRUScreen from '../screens/AboutRUScreen';
+import AboutAppScreen from '../screens/AboutAppScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -20,14 +20,14 @@ const HomeStack = createStackNavigator(
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: 'Cardápio',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-book${focused ? '' : '-outline'}`
+          : 'md-book'
       }
     />
   ),
@@ -35,42 +35,44 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const AboutRUStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    AboutRU: AboutRUScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+AboutRUStack.navigationOptions = {
+  tabBarLabel: 'Sobre o RU',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-help-circle-outline' : 'md-help-circle-outline'} />
   ),
 };
 
-LinksStack.path = '';
+AboutRUStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const AboutAppStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    AboutApp: AboutAppScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+AboutAppStack.navigationOptions = {
+  tabBarLabel: 'Sobre o App',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-phone-portrait' : 'md-phone-portrait'} />
   ),
 };
 
-SettingsStack.path = '';
+AboutAppStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
+  AboutRUStack,
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  AboutAppStack,
+}, {
+  initialRouteName: 'HomeStack',
 });
 
 tabNavigator.path = '';

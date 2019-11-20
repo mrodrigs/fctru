@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
+import { StyleSheet, Dimensions } from 'react-native';
+import { Container, View, DeckSwiper, Card, CardItem, Text } from 'native-base';
 
 import Colors from '../constants/Colors';
 
@@ -54,61 +54,54 @@ const cards = [
 
 export default function MenuCard() {
 	return (
-		<Container style={styles.content}>
-			<View>
-				<Text style={{ marginLeft: 10, fontWeight: 'bold' }}>Arraste para o lado =)</Text>
-				<DeckSwiper
-					dataSource={cards}
-					renderItem={meal =>
-						<Card style={{ elevation: 3 }}>
+		<View style={{ height: 400 }}>
+			<DeckSwiper
+				dataSource={cards}
+				renderItem={meal =>
+					<Card style={{ elevation: 3 }}>
 
-							<CardItem header style={styles.day}>
-								<Text style={styles.dayText}>{meal.day}</Text>
-							</CardItem>
+						<CardItem header style={styles.day}>
+							<Text style={styles.dayText}>{meal.day}</Text>
+						</CardItem>
 
-							<CardItem>
-								<Text style={styles.mealTitle}>Prato Base: </Text>
-								<Text style={styles.mealName}>{meal.base}</Text>
-							</CardItem>
+						<CardItem>
+							<Text style={styles.mealTitle}>Prato Base: </Text>
+							<Text style={styles.mealName}>{meal.base}</Text>
+						</CardItem>
 
-							<CardItem>
-								<Text style={styles.mealTitle}>Prato Principal: </Text>
-								<Text>{meal.main}</Text>
-							</CardItem>
+						<CardItem>
+							<Text style={styles.mealTitle}>Prato Principal: </Text>
+							<Text>{meal.main}</Text>
+						</CardItem>
 
-							<CardItem>
-								<Text style={styles.mealTitle}>Guarnição: </Text>
-								<Text>{meal.garrison}</Text>
-							</CardItem>
+						<CardItem>
+							<Text style={styles.mealTitle}>Guarnição: </Text>
+							<Text>{meal.garrison}</Text>
+						</CardItem>
 
-							<CardItem>
-								<Text style={styles.mealTitle}>Salada: </Text>
-								<Text>{meal.salad}</Text>
-							</CardItem>
+						<CardItem>
+							<Text style={styles.mealTitle}>Salada: </Text>
+							<Text>{meal.salad}</Text>
+						</CardItem>
 
-							<CardItem>
-								<Text style={styles.mealTitle}>Sobremesa: </Text>
-								<Text>{meal.dessert}</Text>
-							</CardItem>
+						<CardItem>
+							<Text style={styles.mealTitle}>Sobremesa: </Text>
+							<Text>{meal.dessert}</Text>
+						</CardItem>
 
-							<CardItem>
-								<Text style={styles.mealTitle}>Prato Vegetariano: </Text>
-								<Text>{meal.vegetarian}</Text>
-							</CardItem>
+						<CardItem>
+							<Text style={styles.mealTitle}>Prato Vegetariano: </Text>
+							<Text>{meal.vegetarian}</Text>
+						</CardItem>
 
-						</Card>
-					}
-				/>
-			</View>
-		</Container>
+					</Card>
+				}
+			/>
+		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	content: {
-		marginHorizontal: 20,
-		marginTop: 10,
-	},
 	day: {
 		justifyContent: 'center',
 		backgroundColor: Colors.tintColor,
